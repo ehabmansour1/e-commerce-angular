@@ -8,7 +8,7 @@
   <h3 (click)="handleRedirect()" class="product-name product-link">
     {{ product.title }}
   </h3>
-  <p class="product-description">{{ product.description }}</p>
+  <p class="product-description">{{ product.description | slice:0:141 }}...</p>
   <div class="product-footer">
     <div class="rating">
       <span *ngFor="let _ of getStars()">⭐</span>

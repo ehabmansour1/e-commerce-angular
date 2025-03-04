@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { Product } from '../product.model';
-import { CommonModule, CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, SlicePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import Swal from 'sweetalert2';
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [CurrencyPipe, CommonModule],
+  imports: [CurrencyPipe, CommonModule, SlicePipe],
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
 })
