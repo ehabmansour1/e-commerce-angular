@@ -1,4 +1,9 @@
 <div class="search-container">
-  <input type="text" class="search-input" placeholder="Search products..." />
-  <button class="btn-primary">Search</button>
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Search products..."
+    [(ngModel)]="searchQuery"
+  />
+  <button class="btn-primary" (click)="onSearch()">Search</button>
 </div>
