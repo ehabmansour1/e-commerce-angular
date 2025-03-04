@@ -1,0 +1,25 @@
+<div class="product-card">
+  <img [src]="product.thumbnail" [alt]="product.title" class="product-image" />
+
+  <div *ngIf="product.stock > 0" class="product-status in-stock">In Stock</div>
+  <div *ngIf="product.stock === 0" class="product-status out-of-stock">
+    Out of Stock
+  </div>
+  <h3 (click)="handleRedirect()" class="product-name product-link">
+    {{ product.title }}
+  </h3>
+  <p class="product-description">{{ product.description }}</p>
+  <div class="product-footer">
+    <div class="rating">
+      <span *ngFor="let _ of getStars()">⭐</span>
+    </div>
+    <div class="product-price">{{ product.price | currency : "EGP" }}</div>
+  </div>
+  <button
+    class="btn-primary"
+    [disabled]="product.stock === 0"
+    (click)="addToCart()"
+  >
+    Add to Cart
+  </button>
+</div>

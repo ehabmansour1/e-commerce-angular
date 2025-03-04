@@ -1,0 +1,80 @@
+<div class="product-details-container" *ngIf="product">
+  <div class="product-details-content">
+    <div class="product-details-left">
+      <div class="product-main-image">
+        <img [src]="product.thumbnail" [alt]="product.title" />
+      </div>
+      <div class="product-gallery">
+        <div class="gallery-item" *ngFor="let image of product.images">
+          <img [src]="image" />
+        </div>
+      </div>
+    </div>
+
+    <div class="product-details-right">
+      <div class="product-info">
+        <h2 class="product-title">{{ product.title }}</h2>
+        <div class="product-description">
+          <p>{{ product.description }}</p>
+        </div>
+
+        <div class="product-price-details">
+          <h3>${{ product.price }}</h3>
+          <h3>
+            or: ${{
+              product.price | discountPrice : product.discountPercentage
+            }}
+          </h3>
+        </div>
+        <div class="product-status">
+          <span
+            class="stock-status"
+            [ngClass]="{
+              'in-stock': product.stock > 0,
+              'out-of-stock': product.stock === 0
+            }"
+          >
+            {{ product.stock > 0 ? "In Stock" : "Out of Stock" }}
+          </span>
+          <span class="items-left" *ngIf="product.stock > 0">
+            Only {{ product.stock }} items left!
+          </span>
+        </div>
+        <div class="product-categories">
+          <h4>Categories</h4>
+          <ul>
+            <li>{{ product.category }}</li>
+          </ul>
+        </div>
+        <div class="purchase-options">
+          <div class="quantity-selector">
+            <button class="quantity-btn minus" (click)="decreaseQuantity()">
+              -
+            </button>
+            <input
+              type="number"
+              class="quantity-input"
+              [value]="quantity"
+              min="1"
+              [max]="product.stock"
+              readonly
+            />
+            <button class="quantity-btn plus" (click)="increaseQuantity()">
+              +
+            </button>
+          </div>
+          <div class="product-actions">
+            <button class="btn-buy">Buy Now</button>
+            <button
+              class="btn-primary"
+              (click)="addToCart()"
+              [disabled]="product.stock === 0"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
