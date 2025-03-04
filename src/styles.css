@@ -1318,4 +1318,25 @@ body {
   .empty-cart h2 {
     font-size: 1.5rem;
   }
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .page-numbers {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .pagination-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .page-button {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+  }
 }

@@ -16,20 +16,15 @@ import { PaginationComponent } from '../pagination/pagination.component';
 export class ProductsGridComponent implements OnInit {
   products: Product[] = [];
   productsRequestsService = inject(ProductsRequestsService);
-
-  // Pagination properties
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalItems: number = 0;
   totalPages: number = 0;
-
   ngOnInit() {
     this.loadProducts();
   }
-
   loadProducts() {
     const skip = (this.currentPage - 1) * this.itemsPerPage;
-
     this.productsRequestsService
       .getProductsList(this.itemsPerPage, skip)
       .subscribe((response) => {

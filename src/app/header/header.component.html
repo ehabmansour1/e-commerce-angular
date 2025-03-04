@@ -1,29 +1,25 @@
-<div class="background">
-  <div class="gradient-sphere"></div>
-  <div class="gradient-sphere secondary"></div>
-</div>
-
 <header>
   <nav>
     <a routerLink="/" class="logo">
       <div class="logo-symbol">E</div>
-      <span>Ehab </span>
+      <span>Ehab</span>
     </a>
-    <div class="nav-items">
-      <a class="btn" routerLink="/login" routerLinkActive="btn-primary"
+    <div class="nav-items" [ngClass]="{ active: isMenuOpen }">
+      <a class="btn" routerLink="/login" routerLinkActive="btn-primary" (click)="closeMenu()"
         >Login</a
       >
-      <a class="btn" routerLink="/register" routerLinkActive="btn-primary"
+      <a class="btn" routerLink="/register" routerLinkActive="btn-primary" (click)="closeMenu()"
         >Register</a
       >
-      <a routerLink="/cart" class="cart-icon">
-        <span class="cart-count">
-          {{ getCartItemCount() }}
-        </span>
-        🛒
+      <a routerLink="/cart" class="cart-icon" (click)="closeMenu()">
+        <span class="cart-count">{{ getCartItemCount() }}</span> 🛒
       </a>
     </div>
-    <div class="hamburger">
+    <div
+      class="hamburger"
+      [ngClass]="{ active: isMenuOpen }"
+      (click)="toggleMenu()"
+    >
       <div></div>
       <div></div>
       <div></div>
